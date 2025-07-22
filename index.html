@@ -10,22 +10,66 @@
 </head>
 <body>
     <div id="app">
-      <h1 v-for="num in nums" class="text-3xl font-bold text-center mt-10">{{num}}</h1>
-     </div>
+    <div class="bg-slate-100 m-6 p-6 rounded-md">
+       <form @submit="addUser">
+         <div>
+            <span>Username</span>
+            <input type="text"
+             class="w-full p-2 rounded-md border border-zinc-100 mt-1 shadow-lg focus:outline-blue-500"
+              placeholder="Enter your username" 
+              v-model="username" />
+        </div>
+        <div class="mt-4">
+            <span>Email</span>
+            <input 
+            type="email"
+             class="w-full p-2 rounded-md border border-zinc-100 mt-1 shadow-lg focus:outline-blue-500" 
+             placeholder="Enter your email"
+
+             v-model="email" />
+        </div>
+<div class="mt-4">
+            <span>Membership status </span>
+          <div  class="flex items-center justify-between gap-4 mt-2" />
+            <div class="flex items-center">
+                <input type="radio" v-model="membership" id="guest"  value="guest" class="w-4 h-4">
+                <label for="guest" class="m1-2 font-medium">Guest</label>
+            </div>
+             <div class="flex items-center">
+                <input type="radio"  v-model="membership"v-model="membership"id="premium"  value="premium" class="w-4 h-4">
+                <label for="premium" class="m1-2 font-medium">Premium</label>
+            </div>
+             <div class="flex items-center">
+                <input type="radio" id="vip"  value="vip" class="w-4 h-4">
+                <label for="vip" class="m1-2 font-medium">VIP</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 flex justify-end">
+            
+        <button 
+        :disabled="isFormValid"
+        type="submit" 
+        class="font-medium bg-blue-500 text-white rounded-md px-6 py-2 hover:bg-blue-700 shadow-lg disabled:bg-zinc-300 disabled:cursor-not-allowed">Submit
+        </button>
+        </div>
+       </form>
     
-    <script>
- const {createApp} = Vue;
+    </div>
 
- createApp({
-    data() {
-        return {
-           title:"wassup yalllll!",
-           nums:[23, 45, 67, 89, 12, 34, 56],
-          
-        };
-    },
-}).mount('#app');
-
-    </script>
+     <div class="bg-slate-100 m-6 p-6 rounded-md">
+        <h1 class="text-2xl font-bold mb-4">Users List </h1>
+        <div>
+            <p>{{ username }}</p>
+            <p>{{ email }}</p>
+            <p>{{ membership }}</p>
+        </div>
+        
+    </div>
+    </div>
+    
+    <script src="./App.js"></script>
+    
+   
 </body>
 </html>
