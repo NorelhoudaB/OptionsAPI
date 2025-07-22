@@ -10,9 +10,8 @@
 </head>
 <body>
     <div id="app">
-      <h1 class="text-3xl font-bold text-center mt-10" :class="false ? 'text-yellow-500': 'text-brown-500'">{{title}}</h1>
-      <button v-on:click="count++">Number is {{count}} </button>
-    </div>
+      <h1 v-for="num in nums" class="text-3xl font-bold text-center mt-10">{{num}}</h1>
+     </div>
     
     <script>
  const {createApp} = Vue;
@@ -21,8 +20,8 @@
     data() {
         return {
            title:"wassup yalllll!",
-           maclass:'text-blue-500',
-           count: 0,
+           nums:[23, 45, 67, 89, 12, 34, 56],
+          
         };
     },
 }).mount('#app');
