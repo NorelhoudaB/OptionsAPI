@@ -5,21 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    
     <title>Vue.js Options APIs</title>
-    <script src="https://cdn.tailwndcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
-    <h1 class="text-3xl font-bold text-center mt-10">Vue.js Options APIs Example</h1>
-
+    <div id="app">
+      <h1 class="text-3xl font-bold text-center mt-10" :class="false ? 'text-yellow-500': 'text-brown-500'">{{title}}</h1>
+      <button v-on:click="count++">Number is {{count}} </button>
+    </div>
+    
     <script>
  const {createApp} = Vue;
 
  createApp({
     data() {
         return {
-           ttitle:"Hello world !",
+           title:"wassup yalllll!",
+           maclass:'text-blue-500',
+           count: 0,
         };
     },
+}).mount('#app');
 
     </script>
 </body>
