@@ -1,36 +1,23 @@
+import UserList from "./UserList.js";
+import UserCreate from "./UserCreate.js";
+import TheWatcher from "./TheWatcher.js";
 
- const {createApp} = Vue;
+const { createApp } = Vue;
 
- createApp({
-    data() {
-        return {
-           users:[],
-          user:{
-            username: '',
-            email: '',
-            membership: 'guest',
-          },
-        };
-    },
-    computed:{
-
-        isFormValid() {
-            return this.username  ==='' || this.email ==='';
-        }
-    },
-    methods: {
-        addUser() {
-            this.users.push({
-                username: this.user.username,
-                email: this.user.email,
-                membership: this.user.membership,
-            });
-
-            this.user.username= '',
-            this.user.email= '',
-            this.user.membership='guest',
-
-            console.log(this.users);
-        },
-    },
-}).mount('#app');
+createApp({
+  components: { UserList, UserCreate, TheWatcher },
+  data() {
+    return {
+      users: [],
+    };
+  },
+  methods: {
+    add(user) {
+        this.users.push({
+            username: user.username,
+            email: user.email,
+            membership: user.membership,
+        })
+    }
+  },
+}).mount("#app");
