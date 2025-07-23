@@ -11,13 +11,13 @@
 <body>
     <div id="app">
     <div class="bg-slate-100 m-6 p-6 rounded-md">
-       <form @submit="addUser">
+       <form @submit.prevent="addUser">
          <div>
             <span>Username</span>
             <input type="text"
              class="w-full p-2 rounded-md border border-zinc-100 mt-1 shadow-lg focus:outline-blue-500"
               placeholder="Enter your username" 
-              v-model="username" />
+              v-model="user.username" />
         </div>
         <div class="mt-4">
             <span>Email</span>
@@ -26,17 +26,17 @@
              class="w-full p-2 rounded-md border border-zinc-100 mt-1 shadow-lg focus:outline-blue-500" 
              placeholder="Enter your email"
 
-             v-model="email" />
+             v-model="user.email" />
         </div>
 <div class="mt-4">
             <span>Membership status </span>
           <div  class="flex items-center justify-between gap-4 mt-2" />
             <div class="flex items-center">
-                <input type="radio" v-model="membership" id="guest"  value="guest" class="w-4 h-4">
+                <input type="radio" v-model="user.membership" id="guest"  value="guest" class="w-4 h-4">
                 <label for="guest" class="m1-2 font-medium">Guest</label>
             </div>
              <div class="flex items-center">
-                <input type="radio"  v-model="membership"v-model="membership"id="premium"  value="premium" class="w-4 h-4">
+                <input type="radio"  v-model="user.membership"id="premium"  value="premium" class="w-4 h-4">
                 <label for="premium" class="m1-2 font-medium">Premium</label>
             </div>
              <div class="flex items-center">
@@ -59,12 +59,19 @@
 
      <div class="bg-slate-100 m-6 p-6 rounded-md">
         <h1 class="text-2xl font-bold mb-4">Users List </h1>
-        <div>
-            <p>{{ username }}</p>
-            <p>{{ email }}</p>
-            <p>{{ membership }}</p>
-        </div>
-        
+       <table class="w-full bg-white rounded-md">
+                <tr class="text-left text-zinc-500">
+                    <th class="p-2 font-light">Username</th>
+                    <th class="p-2 font-light">Email</th>
+                    <th class="p-2 font-light">Membership</th>
+                </tr>
+                <tr v-for="user in users" class="h-20 border-b">
+                   
+                     <td class="p-2" >{{user.username}}</td>
+                     <td class="p-2" >{{user.email}}</td>
+                     <td class="p-2 text-green-500" >{{user.membership}}</td>
+                </tr>
+      </table>   
     </div>
     </div>
     

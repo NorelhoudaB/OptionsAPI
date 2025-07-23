@@ -4,9 +4,12 @@
  createApp({
     data() {
         return {
-           username: "",
-           email:"",
-           membership:'guest',
+           users:[],
+          user:{
+            username: '',
+            email: '',
+            membership: 'guest',
+          },
         };
     },
     computed:{
@@ -16,8 +19,18 @@
         }
     },
     methods: {
-        addUser(){
-            console.log("User added:", this.username, this.email, this.membership);
-        }
+        addUser() {
+            this.users.push({
+                username: this.user.username,
+                email: this.user.email,
+                membership: this.user.membership,
+            });
+
+            this.user.username= '',
+            this.user.email= '',
+            this.user.membership='guest',
+
+            console.log(this.users);
+        },
     },
 }).mount('#app');
